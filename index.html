@@ -1,14 +1,164 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="id">
 <head>
-  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
-  <title>Hello, World!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Digital Kreatif</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/dist/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #0f172a;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .profile-img-container {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin: 0 auto;
+        }
+
+        .profile-img-container::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            border-radius: 50%;
+            z-index: -1;
+            animation: spin 4s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .skill-badge {
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .skill-badge:hover {
+            background: rgba(56, 189, 248, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .social-btn {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            transition: 0.3s;
+        }
+
+        .social-btn:hover {
+            background: #38bdf8;
+            color: #0f172a;
+        }
+    </style>
 </head>
-<body>
-  <h1>
-    Halo nama saya retno!
-  </h1>
+<body class="min-h-screen flex items-center justify-center p-4">
+
+    <div class="max-w-md w-full glass-card p-8 shadow-2xl">
+        <!-- Profile Header -->
+        <div class="text-center mb-8">
+            <div class="profile-img-container mb-6">
+                <img 
+                    src="https://simangu.smksalirsyad-hgl.sch.id/apimangu/uploads/siswa/232410043/1773117355_99c74de6.jpg" 
+                    alt="Foto Profil" 
+                    class="w-full h-full object-cover rounded-full border-4 border-slate-800"
+                    onerror="this.src='https://via.placeholder.com/180?text=Siswa'"
+                >
+            </div>
+            <h1 class="text-3xl font-bold mb-2">Nama Siswa</h1>
+            <p class="gradient-text font-semibold tracking-wide">STUDENT & CREATIVE LEARNER</p>
+            <p class="text-slate-400 text-sm mt-2">SMKS Al Irsyad HGL</p>
+        </div>
+
+        <!-- About Section -->
+        <div class="mb-8">
+            <h2 class="text-sm font-semibold text-slate-500 uppercase tracking-widest mb-4">Tentang Saya</h2>
+            <p class="text-slate-300 text-sm leading-relaxed">
+                Halo! Saya adalah seorang pelajar yang antusias dalam mempelajari teknologi baru dan senang berkolaborasi dalam proyek-proyek kreatif. Berkomitmen untuk terus berkembang dan memberikan yang terbaik.
+            </p>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="mb-8">
+            <h2 class="text-sm font-semibold text-slate-500 uppercase tracking-widest mb-4">Keahlian</h2>
+            <div class="flex flex-wrap gap-2">
+                <span class="skill-badge px-3 py-1 text-xs rounded-full border border-slate-700">Digital Literacy</span>
+                <span class="skill-badge px-3 py-1 text-xs rounded-full border border-slate-700">Communication</span>
+                <span class="skill-badge px-3 py-1 text-xs rounded-full border border-slate-700">Teamwork</span>
+                <span class="skill-badge px-3 py-1 text-xs rounded-full border border-slate-700">Problem Solving</span>
+            </div>
+        </div>
+
+        <!-- Connect Section -->
+        <div>
+            <h2 class="text-sm font-semibold text-slate-500 uppercase tracking-widest mb-4">Hubungi Saya</h2>
+            <div class="flex justify-between items-center bg-slate-800/50 p-4 rounded-2xl border border-slate-700">
+                <div class="flex space-x-3">
+                    <a href="#" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-btn"><i class="far fa-envelope"></i></a>
+                </div>
+                <button onclick="copyToClipboard()" id="copyBtn" class="bg-sky-500 hover:bg-sky-600 text-white text-xs font-bold py-2 px-4 rounded-xl transition">
+                    SALIN LINK
+                </button>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center mt-8 pt-6 border-t border-slate-700/50 text-[10px] text-slate-500 uppercase tracking-tighter">
+            &copy; 2024 Digital Profile • SMKS Al Irsyad HGL
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard() {
+            const dummy = document.createElement('input');
+            const text = window.location.href;
+            document.body.appendChild(dummy);
+            dummy.value = text;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+
+            const btn = document.getElementById('copyBtn');
+            const originalText = btn.innerText;
+            btn.innerText = 'TERSALIN!';
+            btn.classList.replace('bg-sky-500', 'bg-green-500');
+
+            setTimeout(() => {
+                btn.innerText = originalText;
+                btn.classList.replace('bg-green-500', 'bg-sky-500');
+            }, 2000);
+        }
+    </script>
 </body>
 </html>
-
